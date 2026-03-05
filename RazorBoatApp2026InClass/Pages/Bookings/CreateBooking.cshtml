@@ -1,0 +1,40 @@
+﻿@page
+@using SailClubLibrary.Models
+@model RazorBoatApp2026InClass.Pages.Bookings.CreateBookingModel
+@{
+	ViewData["Title"] = "Create booking";
+}
+
+<h1>Create booking</h1>
+
+<form method="post">
+	<label>Boat id</label>: @Model.BookingBoat.Id<br />
+	<label>Boat type</label>: @Model.BookingBoat.TheBoatType<br />
+	<label>Boat model</label>: @Model.BookingBoat.Model<br />
+	<label>Boat sailnumber</label>: @Model.BookingBoat.SailNumber<br />
+
+	<div class="form-group">
+		<label asp-for="@Model.Id" class="control-label"></label>
+		<input asp-for="@Model.Id" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label asp-for="@Model.StartDate" class="control-label"></label>
+		<input asp-for="@Model.StartDate" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label asp-for="@Model.EndDate" class="control-label"></label>
+		<input asp-for="@Model.EndDate" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label asp-for="@Model.Destination" class="control-label"></label>
+		<input asp-for="@Model.Destination" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label asp-for="@Model.PhoneNumber" class="control-label"></label>
+		<input asp-for="@Model.PhoneNumber" class="form-control" />
+	</div>
+
+	<div class="form-group">
+		<input type="submit" asp-route-submitSailNumber="@Model.BookingBoat.SailNumber" class="btn btn-danger" value="Create a booking" />
+	</div>
+</form>

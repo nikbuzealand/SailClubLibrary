@@ -1,0 +1,80 @@
+﻿@page
+@using SailClubLibrary.Models
+@model RazorBoatApp2026InClass.Pages.Members.IndexModel
+@{
+    ViewData["Title"] = "List members";
+}
+
+<h1>List of members</h1>
+
+<p>
+    <a asp-page="CreateMember">Create a new member</a>
+</p>
+
+<form method="get">
+@*     Search:<input type="text" asp-for="@Model.FilterCriteria" />
+    <input type="submit" value="Filter" /> *@
+    Search:<input type="text" asp-for="@Model.FilterCriteria" />
+    <select asp-for="@Model.SortBy" class="form-select d-inline-block" style="width:auto"; margin-left:8px;">
+        <option value="All">All</option>
+        <option value="FirstName">FirstName</option>
+        <option value="SurName">SurName</option>
+        <option value="PhoneNumber">PhoneNumber</option>
+        <option value="Mail">Mail</option>
+        <option value="City">City</option>
+    </select>
+    <br />
+    <!-- All -->
+    <input type="radio"
+        asp-for="SelectedMemberType"
+        value=""
+        checked="@(Model.SelectedMemberType == null)" />
+    <label>All</label>
+
+    <br />
+
+    <!-- Enum values -->
+    @foreach (var type in Enum.GetValues<MemberType>())
+    {
+        <input type="radio"
+            asp-for="SelectedMemberType"
+            value="@type" />
+        <label>@type</label>
+
+        <br />
+    }
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <form method="get">
+            <th>ID</th>
+            <th>MemberType</th>
+            <th>
+                <button type="submit" class="btn btn-link" name="SortBy" Value="FirstName">FirstName</button>
+            </th>
+            <th>
+                <button type="submit" class="btn btn-link" name="SortBy" Value="SurName">SurName</button>
+            </th>
+            <th>
+                <button type="submit" class="btn btn-link" name="SortBy" Value="PhoneNumber">PhoneNumber</button>
+            </th>
+            </form>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Member item in Model.Members)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.TheMemberType</td>
+                <td>@item.FirstName</td>
+                <td>@item.SurName</td>
+                <td>@item.PhoneNumber</td>
+                <td><a asp-page="DeleteMember" asp-route-phoneNumber="@item.PhoneNumber">Delete</a></td>
+                <td><a asp-page="EditMember" asp-route-phoneNumber="@item.PhoneNumber">Edit</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
