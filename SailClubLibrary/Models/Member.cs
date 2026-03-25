@@ -58,6 +58,11 @@ namespace SailClubLibrary.Models
                 $"Rolle: {TheMemberRole}";
         }
 
+        public string FilterAll()
+        {
+            return $"{FirstName ?? ""} {SurName ?? ""} {PhoneNumber ?? ""} {Address ?? ""} {City ?? ""} {Mail ?? ""}";
+        }
+
         public int CompareTo(Member? other)
         {
             if (other == null) return 1;

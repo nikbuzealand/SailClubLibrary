@@ -6,15 +6,36 @@ using System.Threading.Tasks;
 
 namespace SailClubLibrary.Filter
 {
-    public class FilterFunctions
+    public class FilterFunctions<T>
     {
-        public List<T> GenericFilter<T>(List<T> listItems, List<Predicate<T>> listPreds)
+        //public List<T> GenericFilter<T>(List<T> listItems, List<Predicate<T>> listPreds)
+        //{
+        //    foreach (Predicate<T> pred in listPreds)
+        //    {
+        //        listItems = listItems.FindAll(pred);
+        //    }
+        //    return listItems;
+        //}
+
+        public static List<T> Filter(List<T> listVals, List<Predicate<T>> listPreds)
         {
-            foreach (Predicate<T> pred in listPreds)
+            List<T> returnList = new List<T>();
+            foreach(T item in listVals)
             {
-                listItems = listItems.FindAll(pred);
+                int count = 0;
+                foreach(Predicate<T> pred in listPreds)
+                {
+                    if(pred(item))
+                    {
+                        count++;
+                    }
+                }
+                if(count == listPreds.Count)
+                {
+                    returnList.Add(item);
+                }
             }
-            return listItems;
+            return returnList;
         }
     }
 }
