@@ -1,12 +1,6 @@
-﻿using SailClubLibrary.Data;
-using SailClubLibrary.Exceptions;
+﻿using SailClubLibrary.Exceptions;
 using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SailClubLibrary.Services
 {
@@ -26,8 +20,7 @@ namespace SailClubLibrary.Services
         #region Constructor
         public BoatRepository()
         {
-            //_boats = [];
-            _boats = new MockData().BoatData;
+            //_boats = ;
         }
         #endregion
 

@@ -13,6 +13,7 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\RazorBoatApp2026InClass\RazorBoatApp2026InClass.csproj" />
 		<ProjectReference Include="..\SailClubLibrary\SailClubLibrary.csproj" />
 	</ItemGroup>
 
