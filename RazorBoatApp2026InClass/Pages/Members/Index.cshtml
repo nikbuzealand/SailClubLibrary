@@ -66,6 +66,9 @@
         @foreach(Member item in Model.Members)
         {
             <tr>
+                <td>
+                    <img src="/Images/Memberimage/@item.MemberImage" class="rounded-circle" width="80" height="80"/>
+                </td>
                 <td>@item.Id</td>
                 <td>@item.TheMemberType</td>
                 <td>@item.FirstName</td>

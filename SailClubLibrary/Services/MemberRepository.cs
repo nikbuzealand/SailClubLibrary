@@ -1,4 +1,4 @@
-﻿using SailClubLibrary.Data;
+﻿
 using SailClubLibrary.Exceptions;
 using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
@@ -33,7 +33,7 @@ namespace SailClubLibrary.Services
         public MemberRepository()
         {
             //_members = new Dictionary<string, Member>();
-            _members = new MockData().MemberData;
+            
         }
         #endregion
 

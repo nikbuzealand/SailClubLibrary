@@ -1,4 +1,4 @@
-﻿using SailClubLibrary.Data;
+﻿
 using SailClubLibrary.Exceptions;
 using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
@@ -27,7 +27,7 @@ namespace SailClubLibrary.Services
         public BoatRepository()
         {
             //_boats = [];
-            _boats = new MockData().BoatData;
+            
         }
         #endregion
 

@@ -20,7 +20,9 @@ namespace SailClubLibrary.Models
         public string Mail { get; set; }
         public MemberType TheMemberType { get; set; }
         public MemberRole TheMemberRole { get; set; }
-        public int Id { get; set; }
+        public int Id { get; set; } 
+
+       public string MemberImage { get; set; }
         #endregion
 
         #region Constructor
