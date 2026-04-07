@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SailClubLibrary.Data;
-using SailClubLibrary.Exceptions;
+﻿using SailClubLibrary.Exceptions;
 using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
 
@@ -22,8 +16,7 @@ namespace SailClubLibrary.Services
         #region Constructors
         public BookingRepository()
         {
-            //_bookings = [];
-            _bookings = new MockData().BookingData;
+            //_bookings = ;
         }
         #endregion
 
