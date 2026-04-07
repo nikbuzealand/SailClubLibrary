@@ -45,3 +45,15 @@ create table bookings
 );
 
 --Fill tables
+insert into boats values(0,'Model','16-3335','Is very good :3',32,23,33,'1982');
+insert into boats values(6,'Model','17-8767','Fast :3',34,25,17,'2000');
+
+insert into members values('Peter','Jensen','23456789','Gaden 1','Hillerød','PH@gamil.com',2,1);
+insert into members values('Charlotte','Hansen','65345890','Street 1','Roskilde','ch@gamil.com',1,0);
+
+insert into bookings values(getdate(),getdate(),'Boathouse',1,1);
+
+--View tables
+select * from boats
+select * from members
+select * from bookings;
