@@ -40,7 +40,6 @@ namespace SailClubLibrary.Services
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-
                 string leString = "select * from members";
                 SqlCommand command = new SqlCommand(leString, connection);
                 await command.Connection.OpenAsync();
