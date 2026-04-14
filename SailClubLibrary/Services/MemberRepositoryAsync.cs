@@ -101,9 +101,9 @@ namespace SailClubLibrary.Services
                 return membahs.Values.ToList();
             }
 
-            catch(SqlException myException)
+            catch(SqlException databaseException)
             {
-                throw myException;
+                throw databaseException;
             }
         }
         // Formål:

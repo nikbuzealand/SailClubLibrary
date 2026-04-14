@@ -40,7 +40,7 @@
             TheMemberType = theMemberType;
             TheMemberRole = theMemberRole;
             Id = id;
-            MemberImage = "testImage";
+            MemberImage = "Poul.jpg";
         }
 
         #endregion
