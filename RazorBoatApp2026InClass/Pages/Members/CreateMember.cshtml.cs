@@ -9,7 +9,7 @@ namespace RazorBoatApp2026InClass.Pages.Members
 {
     public class CreateMemberModel : PageModel
     {
-        private IMemberRepository _repo;
+        private IMemberRepositoryAsync _repo;
         private IWebHostEnvironment _webHostenviroment;
 
         [BindProperty]
@@ -18,9 +18,9 @@ namespace RazorBoatApp2026InClass.Pages.Members
         [BindProperty]
         public IFormFile Photo { get; set; }
 
-        public CreateMemberModel(IMemberRepository memberRepository, IWebHostEnvironment webHost)
+        public CreateMemberModel(IMemberRepositoryAsync memberRepositoryAsync, IWebHostEnvironment webHost)
         {
-            _repo = memberRepository;
+            _repo = memberRepositoryAsync;
             _webHostenviroment = webHost;
         }
 
@@ -49,7 +49,7 @@ namespace RazorBoatApp2026InClass.Pages.Members
             }
             try
             {
-                _repo.AddMember(NewMember);
+                _repo.AddMemberAsync(NewMember);
             }
 
             //catch(BoatSailnumberExistsException bsnex)

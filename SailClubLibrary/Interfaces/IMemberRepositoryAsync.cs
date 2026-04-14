@@ -5,7 +5,6 @@ namespace SailClubLibrary.Interfaces
     public interface IMemberRepositoryAsync
     {
         Task<int> Count { get; }
-        Task<Dictionary<string,Member>> GetMembersFromDatabaseAsync();
         Task AddMemberAsync(Member member);
         Task RemoveMemberAsync(string phoneNumber);
         Task UpdateMemberAsync(Member updatedMember);

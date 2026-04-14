@@ -7,24 +7,24 @@ namespace RazorBoatApp2026InClass.Pages.Members
 {
     public class EditMemberModel : PageModel
     {
-        private IMemberRepository _repo;
+        private IMemberRepositoryAsync _repo;
         [BindProperty]
 
         public Member MemberToUpdate { get; set; }
 
-        public EditMemberModel(IMemberRepository memberRepository)
+        public EditMemberModel(IMemberRepositoryAsync memberRepositoryAsync)
         {
-            _repo = memberRepository;
+            _repo = memberRepositoryAsync;
         }
 
         public void OnGet(string phoneNumber)
         {
-            MemberToUpdate = _repo.SearchMember(phoneNumber);
+            MemberToUpdate = _repo.SearchMemberAsync(phoneNumber).Result;
         }
 
         public IActionResult OnPostEdit()
         {
-            _repo.UpdateMember(MemberToUpdate);
+            _repo.UpdateMemberAsync(MemberToUpdate);
             return RedirectToPage("Index");
         }
 

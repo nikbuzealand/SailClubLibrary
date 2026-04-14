@@ -34,15 +34,16 @@ namespace SailClubLibrary.Services
         #endregion
 
         #region Methods
-        public async Task<Dictionary<string,Member>> GetMembersFromDatabaseAsync()
+        private async Task<Dictionary<string,Member>> GetMembersFromDatabaseAsync()
         {
             Dictionary<string,Member> memberDictionary = new Dictionary<string,Member>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+
                 string leString = "select * from members";
-                SqlCommand command = new SqlCommand(leString,connection);
-                command.Connection.Open();
+                SqlCommand command = new SqlCommand(leString, connection);
+                await command.Connection.OpenAsync();
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -55,13 +56,13 @@ namespace SailClubLibrary.Services
                     string memberAddress = reader.GetString("memberAddress");
                     string memberCity = reader.GetString("memberCity");
                     string memberMail = reader.GetString("memberMail");
-                    
+
                     int memberTypeEnumID = reader.GetInt32("memberTypeEnumID");
                     int memberRoleEnumID = reader.GetInt32("memberRoleEnumID");
                     MemberType theMemberType = ADO.GetEnumValueFromInt<MemberType>(memberTypeEnumID);
                     MemberRole theMemberRole = ADO.GetEnumValueFromInt<MemberRole>(memberRoleEnumID);
 
-                    Member locatedMember = new Member(memberID,memberFirstName,memberSurName,memberPhoneNumber,memberAddress,memberCity,memberMail,theMemberType,theMemberRole);
+                    Member locatedMember = new Member(memberID, memberFirstName, memberSurName, memberPhoneNumber, memberAddress, memberCity, memberMail, theMemberType, theMemberRole);
                     memberDictionary[memberPhoneNumber] = locatedMember;
                 }
 
@@ -94,9 +95,17 @@ namespace SailClubLibrary.Services
         /// </summary>
         public async Task<List<Member>> GetAllMembersAsync()
         {
-            _members = GetMembersFromDatabaseAsync();
-            Dictionary<string, Member> membahs = await _members;
-            return membahs.Values.ToList();
+            try
+            {
+                _members = GetMembersFromDatabaseAsync();
+                Dictionary<string, Member> membahs = await _members;
+                return membahs.Values.ToList();
+            }
+
+            catch(SqlException myException)
+            {
+                throw myException;
+            }
         }
         // Formål:
         // Fjerne Medlem
