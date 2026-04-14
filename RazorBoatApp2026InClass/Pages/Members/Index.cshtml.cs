@@ -9,7 +9,7 @@ namespace RazorBoatApp2026InClass.Pages.Members
 {
     public class IndexModel : PageModel
     {
-        private IMemberRepository mRepo;
+        private IMemberRepositoryAsync mRepo;
 
         public List<Member> Members { get; set; }
 
@@ -22,9 +22,9 @@ namespace RazorBoatApp2026InClass.Pages.Members
         [BindProperty(SupportsGet = true)]
         public MemberType? SelectedMemberType { get; set; }
 
-        public IndexModel(IMemberRepository memberRepository)
+        public IndexModel(IMemberRepositoryAsync memberRepositoryAsync)
         {
-            mRepo = memberRepository;
+            mRepo = memberRepositoryAsync;
         }
 
         //public void OnGet()
@@ -58,7 +58,7 @@ namespace RazorBoatApp2026InClass.Pages.Members
 
         public void OnGet()
         {
-            Members = MemberFilter(mRepo.GetAllMembers());
+            Members = MemberFilter(mRepo.GetAllMembersAsync().Result);
         }
 
         private void SortMembers()
