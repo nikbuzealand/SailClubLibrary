@@ -9,7 +9,8 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
     {
         private IBoatRepository btRepo;
         private IBookingRepository bkRepo;
-        private IMemberRepository mRepo;
+        private IMemberRepositoryAsync mrepo;
+
 
         public List<Boat> Boats { get; set; }
         public List<Booking> Bookings { get; set; }
@@ -26,25 +27,25 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
         [BindProperty]
         public string PhoneNumber { get; set; }
 
-        public CreateBookingModel(IBoatRepository boatRepository, IBookingRepository bookingRepository, IMemberRepository memberRepository)
+        public CreateBookingModel(IBoatRepository boatRepository, IBookingRepository bookingRepository, IMemberRepositoryAsync memberRepository)
         {
             btRepo = boatRepository;
             bkRepo = bookingRepository;
-            mRepo = memberRepository;
+            mrepo = memberRepository;
         }
 
         public IActionResult OnGet(string sailNumber)
         {
             Boats = btRepo.GetAllBoats();
             Bookings = bkRepo.GetAllBookings();
-            Members = mRepo.GetAllMembers();
+            
             BookingBoat = btRepo.SearchBoat(sailNumber);
             return Page();
         }
 
         public IActionResult OnPost(string submitSailNumber)
         {
-            Booking NewBooking = new Booking(Id, StartDate, EndDate, Destination, (mRepo.SearchMember(PhoneNumber)), (btRepo.SearchBoat(submitSailNumber)));
+            Booking NewBooking = new Booking(Id, StartDate, EndDate, Destination, (mrepo.SearchMemberAsync(PhoneNumber).Result), (btRepo.SearchBoat(submitSailNumber)));
             if (!ModelState.IsValid)
             {
                 return Page();

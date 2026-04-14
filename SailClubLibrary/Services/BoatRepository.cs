@@ -5,6 +5,7 @@ using SailClubLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,14 @@ namespace SailClubLibrary.Services
         #region Constructor
         public BoatRepository()
         {
-            //_boats = [];
+            Dictionary<string, Boat> boats = new Dictionary<string, Boat>
+{
+    { "first", new Boat(4, BoatType.LYNÆS, "fast", "323", "600Hp", 200, 300, 400, "2002") },
+    { "second", new Boat(5, BoatType.LYNÆS, "slow", "423", "800Hp", 400, 600, 800, "2001") }
+};
+
+
+            _boats = boats;
             
         }
         #endregion
