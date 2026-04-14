@@ -7,14 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Images\MemberImages\**" />
+    <Content Remove="wwwroot\Images\MemberImages\**" />
+    <EmbeddedResource Remove="wwwroot\Images\MemberImages\**" />
+    <None Remove="wwwroot\Images\MemberImages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SailClubLibrary\SailClubLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\MemberImages\" />
-    <Folder Include="Images\BoatImages\" />
-    <Folder Include="Images\test\" />
-    <Folder Include="wwwroot\Images\MemberImages\" />
+    <Folder Include="wwwroot\Images\BoatImage\" />
+    <Folder Include="wwwroot\Images\MemberImage\" />
   </ItemGroup>
 
 </Project>
